@@ -1,0 +1,25 @@
+{
+    "name": "@segma/sonar-tool",
+    "version": "0.1.0",
+    "description": "code quality and security checking tool",
+    "main": "index.js",
+    "bin": {
+        "segma-sonar": "index.js"
+    },
+    "files": [
+        "index.js"
+    ],
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "segma",
+        "sonarcube"
+    ],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "commander": "^6.2.0",
+        "sonarqube-scanner": "^2.8.0"
+    }
+}
