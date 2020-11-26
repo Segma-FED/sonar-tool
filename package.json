@@ -1,6 +1,6 @@
 {
     "name": "@segma/sonar-tool",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "code quality and security checking tool",
     "main": "index.js",
     "bin": {
