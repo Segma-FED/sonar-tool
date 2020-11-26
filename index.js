@@ -13,11 +13,12 @@ const readFileAsync = util.promisify(fs.readFile);
 
 program.option('-s, --serverUrl <type>', 'server address');
 program.option('-t, --token <type>', 'token');
+program.option('-e, --exclude <type>', 'exclude');
 /**
  * 解析请求参数
  * */
 program.parse(process.argv);
-let { serverUrl, token } = program.opts();
+let { serverUrl, token, src = './src', exclude = '' } = program.opts();
 if (!serverUrl) {
     console.log("error: option '-s, --serverUrl <type>' argument missing");
     return;
@@ -39,6 +40,7 @@ const scanner = async () => {
      * @param {string} sonar.projectKey  - 项目标识，在创建项目后不可变更，默认值为 'bigdata_frontend_' + package.json中的name字段
      * @param {string} sonar.projectName - 项目显示名，默认值同sonar.projectKey
      * @param {string} sonar.sources     - 包含主源文件的目录，逗号分隔路径
+     * @param {string} sonar.exclusions  - 需要排除的文件目录，逗号分隔路径
      * */
     sonarqubeScanner({
         serverUrl,
@@ -46,7 +48,8 @@ const scanner = async () => {
         options: {
             'sonar.projectKey': `bigdata_frontend_${name}`,
             'sonar.projectName': `bigdata_frontend_${name}`,
-            'sonar.sources': './src'
+            'sonar.sources': src,
+            'sonar.exclusions': exclude
         }
     });
 };

@@ -23,8 +23,37 @@ npm i @segma/sonar-tool --registry=http://npm.segma.tech/
 ```json
 // package.json
 "scripts": {
-    "sonar": "segma-sonar -s <server url> -t <token>"
+    "sonar": "segma-sonar -s <server url> -t <token> -e <exclude path>"
 }
+```
+
+### Options
+
+#### -s
+
+**[必填]** 服务器地址
+
+```bash
+segma-sonar -s <server url>
+segma-sonar --server <server url>
+```
+
+#### -t
+
+**[必填]** 令牌
+
+```bash
+segma-sonar -t <token>
+segma-sonar --token <token>
+```
+
+#### -e
+
+需要排除的文件目录，逗号分隔路径
+
+```bash
+segma-sonar -e <exclude path>
+segma-sonar --exclude <exclude path>
 ```
 
 ## 参考
