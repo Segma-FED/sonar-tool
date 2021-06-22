@@ -14,11 +14,12 @@ const readFileAsync = util.promisify(fs.readFile);
 program.option('-s, --serverUrl <type>', 'server address');
 program.option('-t, --token <type>', 'token');
 program.option('-e, --exclude <type>', 'exclude');
+program.option('-p, --prefix <type>', 'prefix');
 /**
  * 解析请求参数
  * */
 program.parse(process.argv);
-let { serverUrl, token, src = './src', exclude = '' } = program.opts();
+let { serverUrl, token, src = './src', exclude = '', prefix = 'bigdata_frontend_' } = program.opts();
 if (!serverUrl) {
     console.log("error: option '-s, --serverUrl <type>' argument missing");
     return;
@@ -46,8 +47,8 @@ const scanner = async () => {
         serverUrl,
         token,
         options: {
-            'sonar.projectKey': `bigdata_frontend_${name}`,
-            'sonar.projectName': `bigdata_frontend_${name}`,
+            'sonar.projectKey': `${prefix}${name}`,
+            'sonar.projectName': `${prefix}${name}`,
             'sonar.sources': src,
             'sonar.exclusions': exclude
         }
